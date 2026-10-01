@@ -10,11 +10,11 @@
 # Örnek: isaret(5) -> "pozitif"
 def isaret(sayi):
    if sayi > 0 :
-    print("Pozitif") 
+    print("pozitif") 
    elif sayi < 0:
-    print("Negatif")
-   else:
-      print("Sıfır")
+    print("negatif")
+   elif sayi == 0:
+      print("sıfır")
 
 
 
