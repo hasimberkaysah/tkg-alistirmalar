@@ -29,5 +29,5 @@ def test_muze_bilet_fiyati():
 def test_not_ortalamasi():
     assert ortalama([10,56]) == 33
     assert ortalama([90,81]) == 85.5
-    assert ortalama() == "Value Error"
+    assert ortalama([]) == "Value Error"
     
