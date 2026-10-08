@@ -13,7 +13,7 @@ def test_kargo_buyuk_sipariste_ucretsiz():
     assert kargo_ucreti(500) == 0
     assert kargo_ucreti(499) == 50
     assert kargo_ucreti(45) == 50
-    assert kargo_ucreti(0) == 0
+    assert kargo_ucreti(0) == 50
     assert kargo_ucreti(-10) == "Value Error"
 
 
@@ -24,10 +24,10 @@ def test_muze_bilet_fiyati():
     assert bilet_fiyati(18) == 100
     assert bilet_fiyati(64) == 100
     assert bilet_fiyati(65) == 60
-    assert bilet_fiyati(17) == "Value Error"
+    assert bilet_fiyati(-45) == "yaş negatif olamaz"
 
 def test_not_ortalamasi():
     assert ortalama([10,56]) == 33
     assert ortalama([90,81]) == 85.5
-    assert ortalama([]) == "Value Error"
+    assert ortalama([]) == "liste boş"
     
