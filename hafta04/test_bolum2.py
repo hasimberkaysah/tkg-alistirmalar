@@ -10,9 +10,9 @@ from bolum2 import sifre_gucu, otopark_ucreti, yuzde_degisim
 
 def test_kisa_sifre_zayif():
     assert sifre_gucu("abc") == "zayıf"
-    assert sifre_gucu("abc4567") == "zayıf"
+    assert sifre_gucu("1234567") == "zayıf"
 def test_kisa_sifre_orta():
-    assert sifre_gucu("1234567a") == "orta"
+    assert sifre_gucu("12345678") == "orta"
     assert sifre_gucu("1234567890ab") == "orta"
 def test_kisa_sifre_orta():
     assert sifre_gucu("1234567890abc") == "güçlü"
