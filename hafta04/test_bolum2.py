@@ -11,11 +11,19 @@ from bolum2 import sifre_gucu, otopark_ucreti, yuzde_degisim
 def test_kisa_sifre_zayif():
     assert sifre_gucu("abc") == "zayıf"
     assert sifre_gucu("1234567") == "zayıf"
+    assert sifre_gucu("12345") == "zayıf"
+
 def test_kisa_sifre_orta():
+    assert sifre_gucu("abcdefgh") == "orta"
+    assert sifre_gucu("1234567890") == "orta"
     assert sifre_gucu("12345678") == "orta"
-    assert sifre_gucu("1234567890ab") == "orta"
-def test_kisa_sifre_orta():
-    assert sifre_gucu("1234567890abc") == "güçlü"
+
+def test_kisa_sifre_güclü():
+    assert sifre_gucu("123456789012") == "güçlü"
+    assert sifre_gucu("123456789012345") == "güçlü"
+    assert sifre_gucu("abcdefghjkly") == "güçlü"
+
+
 def test_kisa_sifre_bos():
     with pytest.raises(ValueError):
         sifre_gucu("")
