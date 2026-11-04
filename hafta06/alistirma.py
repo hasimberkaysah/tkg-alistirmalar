@@ -7,9 +7,6 @@
 # Fonksiyonların adlarını ve ne yaptıklarını değiştirmeyin; yalnızca nasıl
 # yazıldıklarını değiştirin. Her fonksiyonun üstündeki açıklama, ne yapması
 # gerektiğini (şartnameyi) anlatıyor.
-import os
-import math
-import sys
 
 
 # 1. Bilet fiyatı
@@ -19,49 +16,45 @@ import sys
 # - Öğrencilere 30 TL indirim yapılır.
 def bilet_fiyati(yas, ogrenci, hafta_sonu):
     if yas < 0:
-        raise ValueError('yaş negatif olamaz')
+        raise ValueError("yaş negatif olamaz")
+
     if yas < 6:
         return 0
-    if hafta_sonu == True:
-        if ogrenci == True:
-            return 120
-        else:
-            return 150
-    else:
-        if ogrenci == True:
-            return 70
-        else:
-            return 100
+
+    fiyat = 150 if hafta_sonu else 100
+
+    return fiyat - 30 if ogrenci else fiyat
 
 
 # 2. Not ortalaması
 # - Notların ortalamasını döndürür.
 # - Liste boşsa None döndürür.
-def not_ortalamasi(NotListesi):
-    if len(NotListesi)==0:
+
+
+def not_ortalamasi(not_listesi):
+    if not not_listesi:
         return None
-    Toplam=0
-    for i in range(len(NotListesi)):
-        Toplam = Toplam+NotListesi[i]
-    sonuc = Toplam / len(NotListesi)
-    return Toplam / len(NotListesi)
+
+    toplam = sum(not_listesi)
+    return toplam / len(not_listesi)
 
 
 # 3. Ortalama metni
 # - Not listesi boşsa "not yok" döndürür.
 # - Değilse ortalamayı bir ondalık basamağa yuvarlayıp metin olarak döndürür.
 def ortalama_metni(notlar):
-    ort = not_ortalamasi(notlar)
-    if ort == None:
-        return 'not yok'
-    return str(round(ort, 1))
+    ortalama = not_ortalamasi(notlar)
+
+    if ortalama is None:
+        return "not yok"
+
+    return str(round(ortalama, 1))
+
+
 # 4. Geçti mi?
 # - Puan 50 veya üstüyse True, değilse False döndürür.
 def gecti_mi(puan):
-    if puan >= 50:   
-        return True
-    else:
-        return False
+    return puan >= 50
 
 
 # 5. Sayıya çevir
@@ -70,13 +63,16 @@ def gecti_mi(puan):
 def sayiya_cevir(metin):
     try:
         return int(metin)
-    except:
+    except ValueError:
         return None
 
 
 # 6. Katılımcı ekle
 # - Adı listenin sonuna ekler ve listeyi döndürür.
 # - Liste verilmezse yeni, boş bir listeye ekler.
-def katilimci_ekle(ad, liste=[]):
+def katilimci_ekle(ad, liste=None):
+    if liste is None:
+        liste = []
+
     liste.append(ad)
     return liste
